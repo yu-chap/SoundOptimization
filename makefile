@@ -25,7 +25,7 @@ start:
 
 fresh:
 	find src/data/evaluation/ -type f | grep -v -E '.gitignore' | xargs rm -rf; \
-    find src/data/result/ -type f | grep -v -E '.gitignore' | xargs rm -rf
+	find src/data/result/ -type f | grep -v -E '.gitignore' | xargs rm -rf
 
 cmd:
 ifeq ($(OS),Windows_NT)
