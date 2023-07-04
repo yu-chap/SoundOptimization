@@ -112,7 +112,11 @@ class Sphere(EquationProblem):
         Returns:
             初期集団
         """
-        vars_ = np.random.uniform(self.lower[0], self.upper[0], (self.n, self.d))
+        vars_ = np.random.uniform(
+            self.lower[0],
+            self.upper[0],
+            (self.n, self.d)
+        )
         pop = [Solution(var, np.zeros(self.m)) for var in vars_]
         pop = self.evaluate_all(pop)
         return pop
@@ -176,7 +180,8 @@ class SoundOptimizationProblem(Problem):
     def initialize(self) -> List[Solution]:
         """音声の最適化問題の初期集団を生成します。
 
-        探索を行う初期集団を生成するために、最適化する音声ファイルから音声データを取得しデータの整形を行う。
+        探索を行う初期集団を生成するために、
+        最適化する音声ファイルから音声データを取得しデータの整形を行う。
         整形されたデータをSolutionとして保持しそのリストを返却する。
 
         Returns:
@@ -197,13 +202,16 @@ class SoundOptimizationProblem(Problem):
         """最適化が終了したかどうかを判定します。
 
         最適化が終了したかどうかをユーザーに尋ねることで判定します。
-        終了判定はユーザーに1か0を入力させることで行います。(1 -> 最適化継続。0 -> 終了。)
+        終了判定はユーザーに1か0を入力させることで行います。
+        (1 -> 最適化継続。0 -> 終了。)
 
         Returns:
             最適化が終了する場合はTrue、それ以外の場合はFalse。
         """
         while True:
-            print("Please input 1 to proceed with optimization or 0 to terminate.")
+            print(
+                "Please input 1 to proceed with optimization or 0 to terminate."
+            )
             is_termination = input("-> ")
 
             # 1か0が入力された場合は、正常動作のため、それぞれに対応する値を返却する。

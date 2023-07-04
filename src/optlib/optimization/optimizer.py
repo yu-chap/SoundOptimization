@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import List, Optional
 
 from .optimizationoperator import IOperator
-from .problem import Problem, EquationProblem
+from .problem import EquationProblem, Problem
 from .selector import ISelector
 from .solution import Solution
 
@@ -29,7 +29,9 @@ class BaseOptimizer(ABC):
 
 
 class BasicOptimizer(BaseOptimizer):
-    """基本的な最適化アルゴリズム（進化->評価->選択の原理に従うアルゴリズム）による最適化処理を行うクラス。
+    """
+    基本的な最適化アルゴリズム（進化->評価->選択の原理に従うアルゴリズム）
+    による最適化処理を行うクラス。
 
     基本的な最適化アルゴリズムの例：
         Genetic algorithm
@@ -43,7 +45,12 @@ class BasicOptimizer(BaseOptimizer):
         selector (ISelector): 新たな世代を選択するためのselector
     """
 
-    def __init__(self, problem: EquationProblem, operator: IOperator, selector: ISelector):
+    def __init__(
+            self,
+            problem: EquationProblem,
+            operator: IOperator,
+            selector: ISelector
+    ):
         """
         Args:
             problem: 最適化対象の問題（数式で定義可能な問題）
@@ -81,7 +88,12 @@ class SoundOptimizer(BaseOptimizer):
         generation (int): 世代数
     """
 
-    def __init__(self, problem: Problem, operator: IOperator, selector: ISelector):
+    def __init__(
+            self,
+            problem: Problem,
+            operator: IOperator,
+            selector: ISelector
+    ):
         """
         Args:
             problem: 最適化対象の問題

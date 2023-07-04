@@ -63,11 +63,14 @@ class OperatorDE(IOperator):
         sample_range = list(range(n))
 
         for i in range(n):
-            # ランダムに選択されたr1, r2, r3を用いて差分ベクトルを生成。（r1, r2, r3には自分自身を採用しません。）
+            # ランダムに選択されたr1, r2, r3を用いて差分ベクトルを生成。
+            # （r1, r2, r3には自分自身を採用しません。）
             sample_range.remove(i)
             r1, r2, r3 = random.sample(sample_range, 3)
             sample_range.append(i)
-            mutant_vector = parent_vars[r3] + self.F * (parent_vars[r1] - parent_vars[r2])
+            mutant_vector = (parent_vars[r3]
+                             + self.F
+                             * (parent_vars[r1] - parent_vars[r2]))
             # ランダムに選択された突然変異点と交叉点を差分ベクトルで更新し新しい個体を作成。
             mutation_point = random.sample(range(d), 1)
             mu_index = np.random.rand(d) < self.CR
@@ -109,16 +112,22 @@ class OperatorIDESO(IOperator):
         sample_range = list(range(n))
 
         for i in range(n):
-            # ランダムに選択されたr1, r2, r3を用いて差分ベクトルを生成。（r1, r2, r3には自分自身を採用しません。）
+            # ランダムに選択されたr1, r2, r3を用いて差分ベクトルを生成。
+            # （r1, r2, r3には自分自身を採用しません。）
             sample_range.remove(i)
             r1, r2, r3 = random.sample(sample_range, 3)
             sample_range.append(i)
-            mutant_vector = parent_vars[r3] + self.F * (parent_vars[r1] - parent_vars[r2])
-            # 音声変数（決定変数）は簡単に制約領域を逸脱してしまうため、最小値と最大値から差分ベクトルを生成する。
-            # また、その差分ベクトルを用いてそのまま新しい個体を作成する。
+            mutant_vector = (parent_vars[r3]
+                             + self.F
+                             * (parent_vars[r1] - parent_vars[r2]))
+            # 音声変数（決定変数）は簡単に制約領域を逸脱してしまうため、
+            # 最小値と最大値から差分ベクトルを生成する。
             min_vector = np.min([parent_vars[i, :], mutant_vector], axis=0)
             max_vector = np.max([parent_vars[i, :], mutant_vector], axis=0)
-            offspring_vars[i, :] = min_vector + random.random() * (max_vector - min_vector)
+            offspring_vars[i, :] = (min_vector
+                                    + random.random()
+                                    * (max_vector - min_vector))
+            # 生成した差分ベクトルを用いて新しい個体を作成する。
             offsprings.append(Solution(offspring_vars[i, :], pop[i].obj))
 
         return offsprings

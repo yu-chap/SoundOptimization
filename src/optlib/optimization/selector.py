@@ -3,8 +3,7 @@ from typing import List
 
 import numpy as np
 
-from .solution import Solution, ISolutionWriter
-from .solution import make_objs
+from .solution import ISolutionWriter, Solution, make_objs
 
 
 class ISelector(ABC):
@@ -14,7 +13,11 @@ class ISelector(ABC):
     """
 
     @abstractmethod
-    def select(self, parents: List[Solution], offsprings: List[Solution]) -> List[Solution]:
+    def select(
+            self,
+            parents: List[Solution],
+            offsprings: List[Solution]
+    ) -> List[Solution]:
         """親と子から次世代の解を選択する。
 
         次世代の解を選択するための抽象メソッド。
@@ -36,7 +39,11 @@ class MinSelector(ISelector):
     def __init__(self):
         pass
 
-    def select(self, parents: List[Solution], offsprings: List[Solution]) -> List[Solution]:
+    def select(
+            self,
+            parents: List[Solution],
+            offsprings: List[Solution]
+    ) -> List[Solution]:
         """親と子から評価値が最小の解を選択する。
 
         Args:
@@ -69,7 +76,11 @@ class SOSelector(ISelector):
         self.writer: ISolutionWriter = writer
         self.base_file_path: str = base_file_path
 
-    def select(self, parents: List[Solution], offsprings: List[Solution]) -> List[Solution]:
+    def select(
+            self,
+            parents: List[Solution],
+            offsprings: List[Solution]
+    ) -> List[Solution]:
         """ユーザーの判断に基づいて親と子から解を選択する。
 
         各親と子の解を一つずつ保存し、ユーザーによってその音を評価してもらう。
@@ -90,7 +101,9 @@ class SOSelector(ISelector):
             self.writer.save_solution(offspring, save_path)
 
             while True:
-                print("Which is better for you, parent or offspring? 0: parent, 1: offspring.")
+                print(
+                    "Which is better for you, parent or offspring? 0: parent, 1: offspring."
+                )
                 cmd = input("Please input -> ")
 
                 if cmd == "0":

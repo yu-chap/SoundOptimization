@@ -31,17 +31,39 @@ SOUND_FILES = [
 def main():
     # 最適化に必要なパラメータを初期化します。
     byte_type = TwoBytes()
-    problem = SoundOptimizationProblem(n=POP_SIZE, sound_files=SOUND_FILES, byte_type=byte_type)
     operator = OperatorIDESO(F=F)
-    writer = Wave(channels=CH, sample_width=SAMPLE_WIDTH, frame_rate=FR, byte_type=byte_type)
-    selector = SOSelector(writer=writer, base_file_path="./data/evaluation/")
-    optimizer = SoundOptimizer(problem=problem, operator=operator, selector=selector)
+    problem = SoundOptimizationProblem(
+        n=POP_SIZE,
+        sound_files=SOUND_FILES,
+        byte_type=byte_type
+    )
+    writer = Wave(
+        channels=CH,
+        sample_width=SAMPLE_WIDTH,
+        frame_rate=FR,
+        byte_type=byte_type
+    )
+    selector = SOSelector(
+        writer=writer,
+        base_file_path="./data/evaluation/"
+    )
+    optimizer = SoundOptimizer(
+        problem=problem,
+        operator=operator,
+        selector=selector
+    )
 
     print("Start sound optimization.")
     optimizer.run()
 
     # 最適化によって得られた解を保存します。また、その保存場所を出力します。
-    result_writer = Wave(channels=CH, sample_width=SAMPLE_WIDTH, frame_rate=FR, byte_type=byte_type)
+    result_writer = Wave(
+        channels=CH,
+        sample_width=SAMPLE_WIDTH,
+        frame_rate=FR,
+        byte_type=byte_type
+    )
+
     base_save_path = "./data/result"
     for i, p in enumerate(optimizer.result):
         save_path = f"{base_save_path}/pop{i + 1}.wav"

@@ -81,7 +81,13 @@ class Wave(ISolutionWriter):
         byte_type (IBytes): バイトの型
     """
 
-    def __init__(self, channels: int, sample_width: int, frame_rate: int, byte_type: IBytes):
+    def __init__(
+            self,
+            channels: int,
+            sample_width: int,
+            frame_rate: int,
+            byte_type: IBytes
+    ):
         """
         Attributes:
             channels: チャンネル数

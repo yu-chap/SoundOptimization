@@ -65,7 +65,8 @@ $ make fresh
    -> 1
    ```
 3. 合成された音声が`SoundOptimization/src/data/evaluation/`配下に生成されるため、`parent.wav`と`offspring.wav`
-   を聴き、好みの方を以下の入力欄に入力する。（parentの方が好みの場合は`0`、offspringの方が好みの場合は`1`を入力する。）この操作を全合成回数（デフォルトでは5回）実行する。
+   を聴き、好みの方を以下の入力欄に入力する。（parentの方が好みの場合は`0`、offspringの方が好みの場合は`1`
+   を入力する。）この操作を全合成回数（デフォルトでは5回）実行する。
    ```
    Which is better for you, parent or offspring? 0: parent, 1: offspring.
    Please input ->

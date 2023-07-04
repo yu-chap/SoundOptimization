@@ -122,7 +122,9 @@ def create_converter(converter_name: str) -> IBytes:
     elif converter_name == "FourBytes":
         return FourBytes()
     else:
-        raise ValueError(f"An invalid value was entered. The entered value was [{converter_name}].")
+        raise ValueError(
+            f"An invalid value was entered. The entered value was [{converter_name}]."
+        )
 
 
 def _normalize_float2binary(data: NDArray, byte_size: int) -> NDArray:
