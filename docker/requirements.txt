@@ -1,0 +1,5 @@
+pip==23.1.2
+setuptools==68.0.0
+wheel==0.40.0
+numpy==1.25.0
+nptyping==2.5.0
