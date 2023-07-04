@@ -1,4 +1,2 @@
 .idea/*
 __pycache__/
-src/data/evaluation/*
-src/data/result/*

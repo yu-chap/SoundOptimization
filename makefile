@@ -24,8 +24,8 @@ start:
 	make cmd TARGET:="docker compose exec app bash -c 'python main.py'"
 
 fresh:
-	rm -rf ./src/data/evaluation/*; \
-	rm -rf ./src/data/result/*
+	find src/data/evaluation/ -type f | grep -v -E '.gitignore' | xargs rm -rf; \
+    find src/data/result/ -type f | grep -v -E '.gitignore' | xargs rm -rf
 
 cmd:
 ifeq ($(OS),Windows_NT)
