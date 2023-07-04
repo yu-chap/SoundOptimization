@@ -23,7 +23,7 @@
 
 1. ローカル環境へリポジトリを`git clone`する。
     ```
-   $ git clone 
+   $ git clone https://github.com/yu-chap/SoundOptimization.git
     ```
 2. `make setup`コマンドを実行し、環境構築を行う。
     ```
