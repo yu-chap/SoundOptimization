@@ -22,19 +22,19 @@
 ### 手順
 
 1. ローカル環境へリポジトリを`git clone`する。
-    ```
+   ```
    $ git clone https://github.com/yu-chap/SoundOptimization.git
-    ```
+   ```
 2. `make setup`コマンドを実行し、環境構築を行う。
-    ```
+   ```
     $ make setup
-    ```
+   ```
 3. `make ps`コマンドを実行し、コンテナが立ち上がっていることを確認する。
-    ```
+   ```
    $ make ps
     NAME                      COMMAND             SERVICE             STATUS              PORTS
     soundoptimization-app-1   "python3"           app                 running
-    ```
+   ```
 
 ## アプリ実行方法
 
@@ -56,14 +56,14 @@ $ make fresh
 ### 最適化プロセス
 
 1. `make start`コマンドを実行し、アプリを実行する。
-    ```
-    $ make start
-    ```
+   ```
+   $ make start
+   ```
 2. ターミナルで以下の表示が出力されるため、`1`を入力（もし、最適化を終了する場合は`0`を入力）する。
-    ```
-    Please input 1 to proceed with optimization or 0 to terminate.
-    -> 1
-    ```
+   ```
+   Please input 1 to proceed with optimization or 0 to terminate.
+   -> 1
+   ```
 3. 合成された音声が`SoundOptimization/src/data/evaluation/`配下に生成されるため、`parent.wav`と`offspring.wav`
    を聴き、好みの方を以下の入力欄に入力する。（parentの方が好みの場合は`0`、offspringの方が好みの場合は`1`を入力する。）この操作を全合成回数（デフォルトでは5回）実行する。
    ```
